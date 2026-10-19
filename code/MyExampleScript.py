@@ -1,8 +1,8 @@
 # returns the square of a number
 
-def foo(x):
-    x *= x
-    print(x)
-    return x
+def square(x):
+    """Return the square of x """
+    return x * x
 
-foo(2)
+result = square(2)
+print(f"The square of 2 is {result}")
