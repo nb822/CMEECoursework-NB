@@ -13,8 +13,6 @@
 TreeHeight <- function(degrees, distance) {
     radians <- degrees * pi / 180
     height  <- distance * tan(radians)
-    print(paste("Tree height is:", height))
-
     return(height)
 }
 
@@ -27,17 +25,44 @@ TreeHeight <- function(degrees, distance) {
 ## dataframe with height column 
 
 TreeHeight_loop <- function(dataframe) {
-
-    dataframe$Tree.Height.m <- NA
-    row_number <- nrow(dataframe)
-
-    for (i in 1:row_number) {
-        height <- TreeHeight(dataframe[i, 2], dataframe[i, 3])
-        dataframe[i, 4] <- height
-    }
+    dataframe$height_m <- TreeHeight(dataframe$Angle.degrees, dataframe$Distance.m) 
     return(dataframe)
 }
 
+
+# Checks if all column names correct and if distance and angle columns have accepted numbers
+check_cols <- function(dataframe) {
+    if (colnames(dataframe)[1] != "Species"){
+        return(message("Invalid column names"))
+    }
+    if (colnames(dataframe)[2] != "Distance.m"){
+        return(message("Invalid column names"))
+    }
+    if (colnames(dataframe)[3] != "Angle.degrees"){
+        return(message("Invalid column names"))
+    }
+    for (i in 1:nrow(dataframe)){
+        if (is.finite(dataframe$Distance.m[i]) != TRUE |  
+        dataframe$Distance.m[i] < 0 | dataframe$Distance.m[i] > 100){
+            return(message(sprintf("Invalid distance number at row %d", i)))
+        }
+        if (is.finite(dataframe$Angle.degrees[i]) != TRUE |
+        dataframe$Angle.degrees[i] < 0 | dataframe$Angle.degrees[i] > 90){
+            return(message(sprintf("Invalid angle at row %d", i)))
+        }
+    }
+    return(TRUE)
+    message("All columns read and valid")
+}
+
+#load df
 trees <- read.csv("data/trees.csv")
-height_df <- TreeHeight_loop(trees)
-write.csv(height_df, "results/TreeHts.csv")
+
+#if nothing wrong with dataframe, run height code and write to results, else print error message
+if (check_cols(trees)){
+    height_df <- TreeHeight_loop(trees)
+    write.csv(height_df, "results/TreeHts.csv", row.names = FALSE)
+    message("Code complete, results saved")
+} else {
+   message("Invalid dataframe")
+}
