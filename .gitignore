@@ -1,3 +1,4 @@
 *~
 *.tmp
 sandbox/
+code/__pycache__/
