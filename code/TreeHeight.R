@@ -16,14 +16,12 @@ TreeHeight <- function(degrees, distance) {
     return(height)
 }
 
-## This function takes a dataframe, loops through each 
-## row and appends it to new column Tree.Height.m
+## This function uses the TreeHeight function and calculates it for each row in a df
 ## ARGUMENTS:
 ## dataframe: dataframe with 2nd column Distance and 3rd column Angle.degrees
 ## 
 ## OUTPUT:
 ## dataframe with height column 
-
 TreeHeight_loop <- function(dataframe) {
     dataframe$height_m <- TreeHeight(dataframe$Angle.degrees, dataframe$Distance.m) 
     return(dataframe)
@@ -32,37 +30,39 @@ TreeHeight_loop <- function(dataframe) {
 
 # Checks if all column names correct and if distance and angle columns have accepted numbers
 check_cols <- function(dataframe) {
-    if (colnames(dataframe)[1] != "Species"){
-        return(message("Invalid column names"))
+
+    expected <- c("Species", "Distance.m", "Angle.degrees")
+    if (!identical(colnames(dataframe)[1:3], expected)) {
+        message("Invalid column names")
+        return(FALSE)
     }
-    if (colnames(dataframe)[2] != "Distance.m"){
-        return(message("Invalid column names"))
-    }
-    if (colnames(dataframe)[3] != "Angle.degrees"){
-        return(message("Invalid column names"))
-    }
+
     for (i in 1:nrow(dataframe)){
         if (is.finite(dataframe$Distance.m[i]) != TRUE |  
         dataframe$Distance.m[i] < 0 | dataframe$Distance.m[i] > 100){
-            return(message(sprintf("Invalid distance number at row %d", i)))
+            message(sprintf("Invalid distance number at row %d", i))
+            return(FALSE)
         }
         if (is.finite(dataframe$Angle.degrees[i]) != TRUE |
         dataframe$Angle.degrees[i] < 0 | dataframe$Angle.degrees[i] > 90){
-            return(message(sprintf("Invalid angle at row %d", i)))
+            message(sprintf("Invalid angle at row %d", i))
+            return(FALSE)
         }
     }
-    return(TRUE)
     message("All columns read and valid")
+    return(TRUE)
 }
 
 #load df
 trees <- read.csv("data/trees.csv")
 
 #if nothing wrong with dataframe, run height code and write to results, else print error message
-if (check_cols(trees)){
-    height_df <- TreeHeight_loop(trees)
-    write.csv(height_df, "results/TreeHts.csv", row.names = FALSE)
-    message("Code complete, results saved")
-} else {
-   message("Invalid dataframe")
+if (!check_cols(trees)) {
+    #message already in check_cols so no need for extra
+    quit()
 }
+
+height_df <- TreeHeight_loop(trees)
+write.csv(height_df, "results/TreeHts.csv", row.names = FALSE)
+message("Code complete, results saved")
+
