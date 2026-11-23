@@ -37,17 +37,40 @@ Tab delineated to comma delineated file converter.
 bash code/tabtocsv.sh data/<file>.tsv
 ```
 
-Example code:
+Example working code:
 
 ```
 bash code/tabtocsv.sh data/tab-example.tsv
 ```
 ## Paths
-INPUT: `<file>.tsv` from root repo
+INPUT: `<path>/<file>.tsv` from root repo
 OUTPUT: `results/<file>.tsv.csv` from root repo
 
 ## Validation
 Output checked on `data/tab-example.tsv`. Output checked for invalid file number, and invalid file names. 
+
+# csvtospace.sh
+Comma-delineated file to space delineated file.
+
+## Run
+**From repo root.**
+
+```
+bash code/csvtospace.sh data/<file>.csv
+```
+
+Example working code:
+
+```
+bash code/csvtospace.sh data/temperatures/1801.csv
+```
+## Paths
+INPUT: `<path>/<file>.csv` from repo root
+OUTPUT: `results/<file>.csv.space` from root repo
+
+## Validation
+Output checked on files in `data/temperatures/`. Output checked for invalid file number, and invalid file names. 
+
 
 # clean_silwood_trees.py 
 
