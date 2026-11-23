@@ -27,6 +27,27 @@ OUTPUT: None. Results printed directly in terminal.
 ## Code validation
 Code tested on a .fasta file with 9 characters, line breaks between them and ATGC present. Expected number of bases and ATGC count returned. 
 
+# tabtocsv.sh
+Tab delineated to comma delineated file converter.
+
+## Run
+**From repo root.**
+
+```
+bash code/tabtocsv.sh data/<file>.tsv
+```
+
+Example code:
+
+```
+bash code/tabtocsv.sh data/tab-example.tsv
+```
+## Paths
+INPUT: `<file>.tsv` from root repo
+OUTPUT: `results/<file>.tsv.csv` from root repo
+
+## Validation
+Output checked on `data/tab-example.tsv`. Output checked for invalid file number, and invalid file names. 
 
 # clean_silwood_trees.py 
 
