@@ -1,5 +1,33 @@
 CMEEcoursework repository for learning version control, bash scripting, python and R.
 
+# unixPrac1.txt
+
+### Dependencies
+Uses `--total=never` which is GNU-specific and won't work on MacOS. 
+
+### Usage
+Runs 5 lines of code that extract information from a .fasta file.
+1. Counts number of lines in each .fasta file in data/fasta/ from repo root. 
+1. Prints entire base sequence in /data/fasta/e_coli.fasta
+1. Counts number of bases in /data/fasta/e_coli.fasta
+1. Counts number of times 'ATGC' occurs in /data/fasta/e_coli.fasta
+1. Calculates AT/GC ratio in /data/fasta/e_coli.fasta
+
+## Run
+From the /code/ folder of the repo.
+
+```
+sh unixPrac1.txt
+```
+
+## Paths
+INPUT: `data/fasta/*.fasta`
+OUTPUT: None. Results printed directly in terminal. 
+
+## Code validation
+Code tested on a .fasta file with 9 characters, line breaks between them and ATGC present. Expected number of bases and ATGC count returned. 
+
+
 # clean_silwood_trees.py 
 
 Validates and cleans tree survey data. Valid records are written to a clean file, rejected records to an issues file with reasons, and accepted oaks (genus *Quercus*) are counted by species.
