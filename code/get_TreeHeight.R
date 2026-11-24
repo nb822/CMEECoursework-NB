@@ -88,6 +88,8 @@ filename <- basename(path)
 filename <- gsub(".csv", "", filename)
 new_path <- paste("results/", filename, "_treeheights.csv", sep = "")
 
+#create results directory if it doesn't exist, no warnings so that it doesn't complain if it already exists
+dir.create("results", showWarnings = FALSE, recursive = TRUE)
 
 write.csv(height_df, new_path, row.names = FALSE)
 message("Code complete, results saved")

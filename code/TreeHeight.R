@@ -63,6 +63,9 @@ if (!check_cols(trees)) {
 }
 
 height_df <- TreeHeight_loop(trees)
+
+#make results directory if it doesn't exist, no warnings so that it doesn't complain if it already exists
+dir.create("results", showWarnings = FALSE, recursive = TRUE)
 write.csv(height_df, "results/TreeHts.csv", row.names = FALSE)
 message("Code complete, results saved")
 
