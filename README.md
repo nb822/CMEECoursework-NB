@@ -1,6 +1,7 @@
 CMEEcoursework repository for learning version control, bash scripting, python and R.
 
-# unixPrac1.txt
+# Assignment 1 
+## unixPrac1.txt
 
 ### Dependencies
 Uses `--total=never` which is GNU-specific and won't work on MacOS. 
@@ -13,24 +14,24 @@ Runs 5 lines of code that extract information from a .fasta file.
 1. Counts number of times 'ATGC' occurs in /data/fasta/e_coli.fasta
 1. Calculates AT/GC ratio in /data/fasta/e_coli.fasta
 
-## Run
+### Run
 From the /code/ folder of the repo.
 
 ```
 sh unixPrac1.txt
 ```
 
-## Paths
+### Paths
 INPUT: `data/fasta/*.fasta`
 OUTPUT: None. Results printed directly in terminal. 
 
-## Code validation
+### Code validation
 Code tested on a .fasta file with 9 characters, line breaks between them and ATGC present. Expected number of bases and ATGC count returned. 
 
-# tabtocsv.sh
+## tabtocsv.sh
 Tab delineated to comma delineated file converter.
 
-## Run
+### Run
 **From repo root.**
 
 ```
@@ -42,17 +43,17 @@ Example working code:
 ```
 bash code/tabtocsv.sh data/tab-example.tsv
 ```
-## Paths
+### Paths
 INPUT: `<path>/<file>.tsv` from root repo
 OUTPUT: `results/<file>.tsv.csv` from root repo
 
-## Validation
+### Validation
 Output checked on `data/tab-example.tsv`. Output checked for invalid file number, and invalid file names. 
 
-# csvtospace.sh
+## csvtospace.sh
 Comma-delineated file to space delineated file. Uses simple comma substitution, can not handle commas in quotation marks as data. 
 
-## Run
+### Run
 **From repo root.**
 
 ```
@@ -64,19 +65,19 @@ Example working code:
 ```
 bash code/csvtospace.sh data/temperatures/1801.csv
 ```
-## Paths
+### Paths
 INPUT: `<path>/<file>.csv` from repo root
 OUTPUT: `results/<file>.csv.space` from root repo
 
-## Validation
+### Validation
 Output checked on files in `data/temperatures/`. Output checked for invalid file number, and invalid file names. 
 
-
-# clean_silwood_trees.py 
+# Assignment 2
+## clean_silwood_trees.py 
 
 Validates and cleans tree survey data. Valid records are written to a clean file, rejected records to an issues file with reasons, and accepted oaks (genus *Quercus*) are counted by species.
 
-## Run
+### Run
 
 From the repo root: 
 
@@ -84,7 +85,7 @@ From the repo root:
 Python3 code/clean_silwood_trees.py
 ```
 
-## Paths
+### Paths
 
 - INPUT: `data/silwood_trees_raw.csv` (unchanged downloaded file)
 - OUTPUTS, written to `results/` and overwritten on every run:
@@ -92,9 +93,22 @@ Python3 code/clean_silwood_trees.py
     - `results/silwood_trees_issues.csv` rejected records 
     - `results/oak_species_counts.csv` count of accepted *Quercus* records
 
-## Validation rules
+### Validation rules
 
 As described in `data/silwood_trees_metadata.md`. 
+
+## test_silwood_trees.py
+Checks whether functions of clean_silwood_trees.py gives expected outputs given feedback from coursework. If all tests passed, prints "All tests passed".
+
+### Run
+From the repo root: 
+
+```
+Python3 code/test_silwood_trees.py
+```
+### Paths
+Takes functions from `data/silwood_trees_raw.csv`. No output.
+
 
 # TreeHeight.R
 
