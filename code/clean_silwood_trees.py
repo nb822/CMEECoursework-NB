@@ -171,18 +171,18 @@ def validate_record(
 
     #ANGLE: same workflow as distance
         
-        if angle_degrees == "":
-            error_messages.append("missing angle_degrees")
-        else:
-            try:
-                angle_degrees = float(angle_degrees)
-                if angle_degrees < 90 and angle_degrees >= 0:
-                    new_dict["angle_degrees"] = angle_degrees
-                else:
-                    error_messages.append("angle_degrees out of range")
+    if angle_degrees == "":
+        error_messages.append("missing angle_degrees")
+    else:
+        try:
+            angle_degrees = float(angle_degrees)
+            if angle_degrees < 90 and angle_degrees >= 0:
+                new_dict["angle_degrees"] = angle_degrees
+            else:
+                error_messages.append("angle_degrees out of range")
     
-            except ValueError:
-                error_messages.append("invalid angle_degrees")
+        except ValueError:
+            error_messages.append("invalid angle_degrees")
     
     #FINAL RETURN FORK
     if error_messages:
@@ -213,7 +213,7 @@ def process_records(
             issue_reports.append({
                 "source_row" : str(source_row),
                 "record_id" : rows[i]["record_id"],
-                "reasons" : errors
+                "reasons" : "; ".join(errors)
             })
         else:
             accepted_rows.append(cleaned)
