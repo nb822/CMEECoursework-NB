@@ -29,7 +29,7 @@ ISSUE_FIELDS = ["source_row", "record_id", "reasons"]
 
 OAK_COUNT_FIELDS = ["species", "count"]
 
-ACCEPTED_STRING = r"ST\d{3}"
+ID_PATTERN = re.compile(r"ST\d{3}")
 
 ACCEPTED_LOCATION = [
     "Silwood Bottom",
@@ -50,14 +50,6 @@ ACCEPTED_GENUS = [
 
 GENUS_LOWER_DICT = {genus.lower(): genus for genus in ACCEPTED_GENUS}
 
-ACCEPTED_SPECIES = [
-    "robur",
-    "petraea",
-    "pseudoplatanus",
-    "pendula",
-    "sylvatica",
-    "excelsior"
-]
 
 TAXON_PAIR_DICT = {
     "robur" : "Quercus",
@@ -103,16 +95,18 @@ def validate_record(
     distance_m = row['distance_m']
     angle_degrees = row['angle_degrees']
 
-    #RECORD_ID: stripped, then checked against input 'accepted_ids'. 
+    #RECORD_ID: stripped, then checked against input 'accepted_ids'. Moved 'duplicate record_id' error message here from process_records()
 
     record_id = record_id.strip()
 
     if record_id == "":
-            error_messages.append("missing record_id")
-    elif re.fullmatch(accepted_ids, record_id):
-        new_dict["record_id"] = record_id
-    else:
+        error_messages.append("missing record_id")
+    elif not ID_PATTERN.fullmatch(record_id):
         error_messages.append("invalid record_id")
+    elif record_id in accepted_ids:
+        error_messages.append("duplicate record_id")
+    else:
+        new_dict["record_id"] = record_id
 
     #LOCATION: stripped then checked against 4 canonical location options, stored outside function
     # everything floored to avoid case mismatch 
@@ -143,7 +137,7 @@ def validate_record(
     #SPECIES: same workflow as location
 
     species = species.strip()
-    canonical_sp = ACCEPTED_SPECIES.get(species.lower())
+    canonical_sp = species.lower() if species.lower() in TAXON_PAIR_DICT else None
 
     if species == "":
         error_messages.append("missing species")
@@ -210,16 +204,13 @@ def process_records(
     accepted_rows = []
     issue_reports = []
     #making set to see if any duplicates
-    record_ids = set()
+    accepted_ids = set()
 
     ##loop through each row in dataframe using function validate_record()
     for i in range(0, len(rows)):
         source_row = i + 2
-        cleaned, errors = validate_record(rows[i], source_row, ACCEPTED_STRING)
+        cleaned, errors = validate_record(rows[i], source_row, accepted_ids)
 
-        if not errors and cleaned["record_id"] in record_ids:
-            errors = ["duplicate record_id"]
-        
         if errors:
             issue_reports.append({
                 "source_row" : str(source_row),
@@ -228,7 +219,7 @@ def process_records(
             })
         else:
             accepted_rows.append(cleaned)
-            record_ids.add(cleaned["record_id"])
+            accepted_ids.add(cleaned["record_id"])
 
     return accepted_rows, issue_reports
     
