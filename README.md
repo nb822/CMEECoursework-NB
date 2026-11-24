@@ -50,7 +50,7 @@ OUTPUT: `results/<file>.tsv.csv` from root repo
 Output checked on `data/tab-example.tsv`. Output checked for invalid file number, and invalid file names. 
 
 # csvtospace.sh
-Comma-delineated file to space delineated file.
+Comma-delineated file to space delineated file. Uses simple comma substitution, can not handle commas in quotation marks as data. 
 
 ## Run
 **From repo root.**

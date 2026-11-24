@@ -35,7 +35,7 @@ if ! mkdir -p data/; then
     exit 4
 fi
 
-cat "$1" | tr "," " " > "results/$name.space"
+cat "$1" | tr "," " " > "results/$name.txt"
 printf 'Done! Created a space-separated version of %s\n' "$1"
 exit 0
 
