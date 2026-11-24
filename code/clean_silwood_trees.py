@@ -11,7 +11,9 @@ import re
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
 INPUT_PATH = PROJECT_ROOT / "data" / "silwood_trees_raw.csv"
+
 RESULTS_DIR = PROJECT_ROOT / "results"
 
 INPUT_FIELDS = [
@@ -22,16 +24,20 @@ INPUT_FIELDS = [
     "distance_m",
     "angle_degrees",
 ]
+
 ISSUE_FIELDS = ["source_row", "record_id", "reasons"]
+
 OAK_COUNT_FIELDS = ["species", "count"]
 
-ACCEPTED_STRING = '^ST\d{3}$'
+ACCEPTED_STRING = r"ST\d{3}"
+
 ACCEPTED_LOCATION = [
     "Silwood Bottom",
     "Nash's Field",
     "Manor House",
     "Reactor Wood"
 ]
+
 LOCATION_LOWER_DICT = {loc.lower(): loc for loc in ACCEPTED_LOCATION}
 
 ACCEPTED_GENUS = [
@@ -62,12 +68,12 @@ TAXON_PAIR_DICT = {
     "excelsior" : "Fraxinus"
 }
 
-#redundant as dict entries all lower anyway; relic of copy-paste function from genus and loc
-SPECIES_LOWER_DICT = {species.lower(): species for species in ACCEPTED_SPECIES}
 
 #creates a list of dictionaries; each dict maps a colname to a value
 def load_records(path: Path = INPUT_PATH) -> list[dict[str, str]]:
+
     """Read the survey and check its column names."""
+    
     with path.open(newline="", encoding="utf-8") as source:
         reader = csv.DictReader(source)
         if reader.fieldnames != INPUT_FIELDS:
@@ -83,7 +89,6 @@ def validate_record(
     accepted_ids: set[str],
 ) -> tuple[dict[str, str] | None, list[str]]:
 
-    
     """Clean one record, or return the reasons it cannot be used."""
 
     #Make empty dictionary and error list
@@ -138,7 +143,7 @@ def validate_record(
     #SPECIES: same workflow as location
 
     species = species.strip()
-    canonical_sp = SPECIES_LOWER_DICT.get(species.lower())
+    canonical_sp = ACCEPTED_SPECIES.get(species.lower())
 
     if species == "":
         error_messages.append("missing species")
@@ -156,12 +161,14 @@ def validate_record(
 
     #DISTANCE: convert the distance to float, if conversion doesn't work, invalid distance. Then see if distance within accepted range
     
+    distance_m = distance_m.strip()
+
     if distance_m == "":
         error_messages.append("missing distance_m")
     else:
         try:
             distance_m = float(distance_m)
-            if distance_m < 100 and distance_m >= 0:
+            if distance_m <= 100 and distance_m >= 0:
                 new_dict["distance_m"] = distance_m
             else:
                 error_messages.append("distance_m out of range")
@@ -170,13 +177,15 @@ def validate_record(
             error_messages.append("invalid distance_m")
 
     #ANGLE: same workflow as distance
-        
+    
+    angle_degrees = angle_degrees.strip()
+    
     if angle_degrees == "":
         error_messages.append("missing angle_degrees")
     else:
         try:
             angle_degrees = float(angle_degrees)
-            if angle_degrees < 90 and angle_degrees >= 0:
+            if angle_degrees <= 90 and angle_degrees >= 0:
                 new_dict["angle_degrees"] = angle_degrees
             else:
                 error_messages.append("angle_degrees out of range")
@@ -185,6 +194,7 @@ def validate_record(
             error_messages.append("invalid angle_degrees")
     
     #FINAL RETURN FORK
+    
     if error_messages:
         return None, error_messages
     return new_dict, []
@@ -193,6 +203,7 @@ def validate_record(
 def process_records(
     rows: Iterable[dict[str, str]],
 ) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    
     """Sort records into accepted rows and issue reports."""
 
     ##make empty lists accepted_rows and issue_reports
@@ -223,20 +234,24 @@ def process_records(
     
 
 def summarise_oaks(clean_records: Iterable[dict[str, str]]) -> list[dict[str, str]]:
+    
     """Count accepted oak records by species."""
 
     oak_indivs = []
 
     #for loop through accepted records, creates list with each oak species name
+    
     for i in range(0 , len(clean_records)):
         if clean_records[i]['genus'] == 'Quercus':
             oak_indivs.append(clean_records[i]['species'])
 
     #Create a tally dictionary where 'species_a' : number of indivs
+    
     tally = dict(Counter(oak_indivs))
 
     #current format of tally: {"petraea": 4, "robur" : 4}
     #what we need: [{"species" : "petraea", "count" : 4}, {"species" : "robur", "count" : 4}]
+    
     return_list = [{
         "species": name, "count": count}
         for name, count in tally.items()
@@ -251,7 +266,9 @@ def write_csv(
     fieldnames: list[str],
     rows: Iterable[dict[str, str]],
 ) -> None:
+    
     """Write rows to a CSV file, replacing an older copy."""
+    
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as destination:
         writer = csv.DictWriter(destination, fieldnames=fieldnames)
@@ -260,7 +277,9 @@ def write_csv(
 
 
 def main() -> None:
+    
     """Clean the survey and write the three result files."""
+
     clean_records, issues = process_records(load_records())
     oak_counts = summarise_oaks(clean_records)
 
