@@ -239,13 +239,10 @@ def summarise_oaks(clean_records: Iterable[dict[str, str]]) -> list[dict[str, st
     #Create a tally dictionary where 'species_a' : number of indivs
     
     tally = dict(Counter(oak_indivs))
-
-    #current format of tally: {"petraea": 4, "robur" : 4}
-    #what we need: [{"species" : "petraea", "count" : 4}, {"species" : "robur", "count" : 4}]
     
     return_list = [{
         "species": name, "count": count}
-        for name, count in tally.items()
+        for name, count in sorted(tally.items())
     ]
 
     return return_list
