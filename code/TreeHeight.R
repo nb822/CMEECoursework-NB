@@ -39,12 +39,12 @@ check_cols <- function(dataframe) {
 
     for (i in 1:nrow(dataframe)){
         if (is.finite(dataframe$Distance.m[i]) != TRUE |  
-        dataframe$Distance.m[i] < 0 | dataframe$Distance.m[i] > 100){
+        dataframe$Distance.m[i] <= 0 | dataframe$Distance.m[i] > 100){
             message(sprintf("Invalid distance number at row %d", i))
             return(FALSE)
         }
         if (is.finite(dataframe$Angle.degrees[i]) != TRUE |
-        dataframe$Angle.degrees[i] < 0 | dataframe$Angle.degrees[i] > 90){
+        dataframe$Angle.degrees[i] <= 0 | dataframe$Angle.degrees[i] >= 90){
             message(sprintf("Invalid angle at row %d", i))
             return(FALSE)
         }
