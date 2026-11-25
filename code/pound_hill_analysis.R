@@ -1,7 +1,11 @@
 # Packages ---------------------------------------------------------------
 message("\n----------------LOADING PACKAGES-------------------------\n")
-library(tidyverse)
-library(reshape2)
+#check if packages are installed, if not install them
+if (!require("tidyverse")) install.packages("tidyverse")
+if (!require("reshape2")) install.packages("reshape2")
+
+require(tidyverse)
+require(reshape2)
 
 # Load the data ----------------------------------------------------------
 # The first rows describe the sampling design, so do not use one as a header yet.
@@ -81,6 +85,10 @@ plot_mean_richness <- quadrat_richness  %>%
     dplyr::group_by(Cultivation, Block, Plot)  %>% 
     summarise(Mean_Richness = mean(Richness), .groups = "drop")
 #save table
+
+#create results directory if it doesn't exist, no warnings so that it doesn't complain if it already exists
+dir.create("results", showWarnings = FALSE, recursive = TRUE)
+
 write.csv(plot_mean_richness, "results/pound_hill_plot_richness.csv", row.names = FALSE)
 message("\n Plot mean richness table saved to results/pound_hill_plot_richness.csv\n")
 
