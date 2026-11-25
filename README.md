@@ -174,11 +174,11 @@ code/run_get_TreeHeight.sh
 ### Paths
 Uses same paths as get_TreeHeight.R
 
-# pound_hill_analysis.R
+## pound_hill_analysis.R
 
 Pivots pound hill data to a long format, saves a mean plot species richness table and figure. Missing values coded as zeros. 
 
-## Run
+### Run
 
 From the repo root:
 
@@ -186,8 +186,18 @@ From the repo root:
 Rscript code/pound_hill_analysis.R
 ```
 
-## Paths
+### Paths
 
 - Input: `data/pound_hill_data.csv` (unchanged downloaded file)
 - Output: `results/pound_hill_plot_richness.csv` and `results/pound_hill_plot_richness.pdf`
 
+# Classwork
+## variables.sh
+Practice code to show how variables are stored and called. The arguments can be any values and the script will prompt you in the terminal to type a string and two integers separated by a space.
+
+### Run
+
+From repo root:
+```
+bash code/variables.sh <value> <value>
+```
