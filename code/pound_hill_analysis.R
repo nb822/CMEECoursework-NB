@@ -83,7 +83,7 @@ quadrat_richness <- MyWrangledData  %>%
 # Make a plot-level table containing Cultivation, Block, Plot and mean Richness
 plot_mean_richness <- quadrat_richness  %>%
     dplyr::group_by(Cultivation, Block, Plot)  %>% 
-    summarise(Mean_Richness = mean(Richness), .groups = "drop")
+    summarise(MeanRichness = mean(Richness), .groups = "drop")
 #save table
 
 #create results directory if it doesn't exist, no warnings so that it doesn't complain if it already exists
@@ -93,17 +93,17 @@ write.csv(plot_mean_richness, "results/pound_hill_plot_richness.csv", row.names 
 message("\n Plot mean richness table saved to results/pound_hill_plot_richness.csv\n")
 
 # Plot mean richness among three different cultivation treatments 
-pdf("results/pound_hill_plot_richness.pdf", 11.7, 8.3) 
 
-
-ggplot(plot_mean_richness, aes(x = Cultivation, y = Mean_Richness, fill = Block))+
+richness_plot <- ggplot(plot_mean_richness, aes(x = Cultivation, y = MeanRichness, fill = Block))+
     geom_col(position = "dodge")+
     scale_fill_manual(values = c("#41AEBD", "#97E9D5", "#A2CF49", "#608F3D"))+
     xlab("Cultivation month")+
     ylab("Species richness")+
     theme_classic()
 
-graphics.off()
+ggsave("results/pound_hill_plot_richness.pdf", plot = richness_plot,
+       width = 11.7, height = 8.3, units = "in")
+
 message("\nSpecies richness by plot graph saved to results/pound_hill_plot_richness.pdf\n\n")
 
 # FIGURE INTERPRETATION
@@ -123,14 +123,16 @@ plot_total_abundance <- quadrat_abundance  %>%
     dplyr::group_by(Cultivation, Block, Plot)  %>% 
     summarise(Total_abundance = sum(Abundance), .groups = "drop")
 
-ggplot(plot_total_abundance, aes(x = Cultivation, y = Total_abundance, fill = Block))+
-    geom_col(position = "dodge")+
-    scale_fill_manual(values = c("#41AEBD", "#97E9D5", "#A2CF49", "#608F3D"))+
-    xlab("Cultivation month")+
-    ylab("Total plot plant abundance")+
+abundance_plot <- ggplot(plot_total_abundance, aes(x = Cultivation, y = Total_abundance, fill = Block)) +
+    geom_col(position = "dodge") +
+    scale_fill_manual(values = c("#41AEBD", "#97E9D5", "#A2CF49", "#608F3D")) +
+    xlab("Cultivation month") +
+    ylab("Total plot plant abundance") +
     theme_classic()
 
-
+ggsave("results/pound_hill_plot_abundance.pdf", plot = abundance_plot,
+       width = 11.7, height = 8.3, units = "in")
+       
 # FIGURE INTERPRETATION. 
 # Unlike richness, patterns of abundance vary among plots. 
 # May is only the peak month of abundance for one plot. Indicating that more species rich plots aren't necessarily the most plant-dense. This may be due to increased competition, where reduced richness leads to numerical dominance of some species.
