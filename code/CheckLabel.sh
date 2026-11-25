@@ -1,3 +1,4 @@
+#!/bin/bash
 
 ## tells user if they have not added an input argument what they can input (oak or pine)
 if [[ $# -ne 1 ]]; then

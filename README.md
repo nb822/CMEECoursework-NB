@@ -225,3 +225,17 @@ or
 code/boilerplate.sh
 ```
 
+## CheckLabel.sh
+Exercise to learn basics of if statements. If the argument supplied is an oak or pine, it prints oak or pine respectively. Else, it prints 'Unknown label'.
+
+### Run
+
+From repo root:
+```
+bash code/CheckLabel.sh <argument>
+```
+e.g.
+```
+bash code/CheckLabel.sh oak
+```
+
