@@ -17,7 +17,7 @@ Runs 5 lines of code that extract information from a .fasta file.
 ### Run
 From the /code/ folder of the repo.
 
-```
+```bash
 sh unixPrac1.txt
 ```
 
@@ -34,13 +34,13 @@ Tab delineated to comma delineated file converter.
 ### Run
 **From repo root.**
 
-```
+```bash
 bash code/tabtocsv.sh data/<file>.tsv
 ```
 
 Example working code:
 
-```
+```bash
 bash code/tabtocsv.sh data/tab-example.tsv
 ```
 ### Paths
@@ -56,13 +56,13 @@ Comma-delineated file to space delineated file. Uses simple comma substitution, 
 ### Run
 **From repo root.**
 
-```
+```bash
 bash code/csvtospace.sh data/<file>.csv
 ```
 
 Example working code:
 
-```
+```bash
 bash code/csvtospace.sh data/temperatures/1801.csv
 ```
 ### Paths
@@ -81,7 +81,7 @@ Validates and cleans tree survey data. Valid records are written to a clean file
 
 From the repo root: 
 
-```
+```bash
 Python3 code/clean_silwood_trees.py
 ```
 
@@ -103,7 +103,7 @@ Checks whether functions of clean_silwood_trees.py gives expected outputs given 
 ### Run
 From the repo root: 
 
-```
+```bash
 Python3 code/test_silwood_trees.py
 ```
 ### Paths
@@ -118,7 +118,7 @@ Calculate tree height from the angle and distance from a tree, using height = di
 
 From the repo root:
 
-```
+```bash
 Rscript code/TreeHeight.R
 ```
 
@@ -142,11 +142,11 @@ Generalisable script that calculates tree height from the angle and distance fro
 
 From the repo root:
 
-```
+```bash
 Rscript code/get_TreeHeight.R data/<any_tree.csv>
 ```
 Example script:
-```
+```bash
 Rscript code/get_TreeHeight.R data/trees.csv
 ```
 
@@ -167,7 +167,7 @@ Bash script that runs get_TreeHeight.R
 
 ### Run
 From the repo root:
-```
+```bash
 code/run_get_TreeHeight.sh
 ```
 
@@ -182,7 +182,7 @@ Pivots pound hill data to a long format, saves a mean plot species richness tabl
 
 From the repo root:
 
-```
+```bash
 Rscript code/pound_hill_analysis.R
 ```
 
@@ -198,7 +198,7 @@ Practice code to show how variables are stored and called. The arguments can be 
 ### Run
 
 From repo root:
-```
+```bash
 bash code/variables.sh <value> <value>
 ```
 ## MyExampleScript.sh
@@ -207,7 +207,7 @@ Basic bash script to show how variables can be stored and called. Prints "Hello 
 ### Run
 
 From repo root:
-```
+```bash
 bash code/MyExampleScript.sh
 ```
 
@@ -217,11 +217,11 @@ Basic bash script to show how scripts can be run from the terminal
 ### Run
 
 From repo root:
-```
+```bash
 bash code/boilerplate.sh
 ```
 or
-```
+```bash
 code/boilerplate.sh
 ```
 
@@ -231,11 +231,11 @@ Exercise to learn basics of if statements. If the argument supplied is an oak or
 ### Run
 
 From repo root:
-```
+```bash
 bash code/CheckLabel.sh <argument>
 ```
 e.g.
-```
+```bash
 bash code/CheckLabel.sh oak
 ```
 ## CountLines.sh
@@ -243,11 +243,11 @@ Counts number of lines in a file.
 
 ### Run
 From repo root:
-```
+```bash
 bash code/CountLines.sh <file.txt>
 ```
 Example code:
-```
+```bash
 bash code/CountLines.sh data/spawannxs.txt
 ```
 
@@ -256,12 +256,12 @@ script that concatenates two supplied files together and outputs combined file.
 
 ### Run
 From repo root:
-```
+```bash
 bash code/ConcatenateTwoFiles.sh <file1>.txt <file2>.txt <file3>.txt
 ```
 
 Example test:
-```
+```bash
 #make directory if doesn't already exist
 mkdir -p sandbox/results sandbox/code
 
@@ -277,3 +277,32 @@ See Example test above
 
 Input: two .txt files (within a specified directory) as the first two arguments
 Output: a .txt file (within a specified directory) as third argument.
+
+## tiff2_png.sh
+Converts a .tiff image to a .png image.
+
+### Run
+From repository root assuming .tiff file is in the root folder. Otherwise provide a path to the .tiff file. For an example using a folder containing a .tiff file outside the repository, see 'Example code':
+
+```bash
+bash code/tiff2_png.sh <name>.tiff
+```
+
+Example code (from repo root):
+```bash
+#store path to code as variable
+project_root=$PWD
+script_path=$project_root/code/tiff2_png.sh
+
+#make temporary directory
+test_dir=$(mktemp -d) && mkdir "$test_dir/images" && cd "$test_dir/images" && pwd
+
+#copy .tiff images into the test directory. Here a .tiff file is downloaded manually to the ~/Downloads/ folder from https://commons.wikimedia.org/wiki/File:%221775...167th_Anniversary...1942%22_-_NARA_-_513783.tiff before this line of code is run.
+cp ~/Downloads/_1775...167th_Anniversary...1942__-_NARA_-_513783.tiff "$test_dir/images/"
+
+#run script
+bash "$script_path" _1775...167th_Anniversary...1942__-_NARA_-_513783.tiff
+```
+### Paths
+Input(s): a .tiff file
+Output(s): a .png file in the **same folder** as the .tiff file
