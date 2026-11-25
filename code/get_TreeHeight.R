@@ -64,21 +64,20 @@ path <- commandArgs(trailingOnly = TRUE)
 
 if (length(path) != 1) {
     message("Please supply exactly one argument")
-    quit(status = 1)
+    stop()
 }
 
 if (!file.exists(path)) {
     message("File path does not exist")
-    quit(status = 1)
+    stop()
 }
 
-
 message(sprintf("Reading file '%s'", path))
-trees <- read.csv(path)
+trees <- read.csv(path, check.names = FALSE)
 
 if (!check_cols(trees)) {
     #message already in check_cols so no need for extra
-    quit(status = 1)
+    stop()
 }
 
 height_df <- TreeHeight_loop(trees)

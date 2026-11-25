@@ -54,12 +54,12 @@ check_cols <- function(dataframe) {
 }
 
 #load df
-trees <- read.csv("data/trees.csv")
+trees <- read.csv("data/trees.csv", check.names = FALSE)
 
 #if nothing wrong with dataframe, run height code and write to results, else print error message
 if (!check_cols(trees)) {
     #message already in check_cols so no need for extra
-    quit()
+    stop()
 }
 
 height_df <- TreeHeight_loop(trees)
