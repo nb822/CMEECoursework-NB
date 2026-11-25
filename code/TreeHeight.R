@@ -53,19 +53,24 @@ check_cols <- function(dataframe) {
     return(TRUE)
 }
 
-#load df
-trees <- read.csv("data/trees.csv", check.names = FALSE)
+#Python if __name__ == "__main__": equivalent. Means source() will not run this code, but running the script directly will
+# reads tree.csv, runs height calculations and saves results to results/TreeHts.csv
+if (sys.nframe() == 0) {
+    trees <- read.csv("data/trees.csv", check.names = FALSE)
 
-#if nothing wrong with dataframe, run height code and write to results, else print error message
-if (!check_cols(trees)) {
-    #message already in check_cols so no need for extra
-    stop()
+    #if nothing wrong with dataframe, run height code and write to results, else print error message
+    if (!check_cols(trees)) {
+        #message already in check_cols so no need for extra
+        stop()
+    }
+
+    height_df <- TreeHeight_loop(trees)
+
+
+    #make results directory if it doesn't exist, no warnings so that it doesn't complain if it already exists
+    dir.create("results", showWarnings = FALSE, recursive = TRUE)
+    write.csv(height_df, "results/TreeHts.csv", row.names = FALSE)
+    message("Code complete, results saved")
+
 }
-
-height_df <- TreeHeight_loop(trees)
-
-#make results directory if it doesn't exist, no warnings so that it doesn't complain if it already exists
-dir.create("results", showWarnings = FALSE, recursive = TRUE)
-write.csv(height_df, "results/TreeHts.csv", row.names = FALSE)
-message("Code complete, results saved")
 
