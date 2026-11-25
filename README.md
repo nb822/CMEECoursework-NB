@@ -109,12 +109,12 @@ Python3 code/test_silwood_trees.py
 ### Paths
 Takes functions from `data/silwood_trees_raw.csv`. No output.
 
-
-# TreeHeight.R
+# Assignment 3
+## TreeHeight.R
 
 Calculate tree height from the angle and distance from a tree, using height = distance * tan(angle in radians)
 
-## Run
+### Run
 
 From the repo root:
 
@@ -122,41 +122,57 @@ From the repo root:
 Rscript code/TreeHeight.R
 ```
 
-## Paths
+### Paths
 
 - Input: `data/trees.csv` (unchanged downloaded file)
 - Output: `results/TreeHts.csv` (generated; the script recreates it)
 
-## Check
+### Check
 
 Row 1: Species = _Populus tremula_, Distance = 31.66583m, Angle = 41.28264 degrees.
 
 By hand: 31.66583 * tan(41.28264 * pi / 180) = 27.80212.
 <br> 'results/TreeHts.csv' gives the same answer.
 
-# get_TreeHeight.R
+## get_TreeHeight.R
 
 Generalisable script that calculates tree height from the angle and distance from a tree, using height = distance * tan(angle in radians)
 
-## Run
+### Run
 
 From the repo root:
 
 ```
-Rscript code/get_TreeHeight.R <data/any_tree.csv>
+Rscript code/get_TreeHeight.R data/<any_tree.csv>
+```
+Example script:
+```
+Rscript code/get_TreeHeight.R data/trees.csv
 ```
 
-## Paths
+### Paths
 
 - Input: `<data/any_tree.csv>` File with columns: "Species", "Distance.m" and "Angle.degrees"
 - Output: `results/<any_tree>_treeheights.csv` generated
 
-## Check
+### Check
 
 - Input with no supplied data file: Please supply exactly one argument
 - Input with >1 supplied arguemnt: Please supply exactly one argument
 - Input with csv file with incorrect colnames: Invalid column names
 - Script over-writes results file when called twice. 
+
+## run_get_TreeHeight.sh
+Bash script that runs get_TreeHeight.R
+
+### Run
+From the repo root:
+```
+code/run_get_TreeHeight.sh
+```
+
+### Paths
+Uses same paths as get_TreeHeight.R
 
 # pound_hill_analysis.R
 
