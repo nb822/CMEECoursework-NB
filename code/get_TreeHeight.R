@@ -27,7 +27,8 @@ height_df <- TreeHeight_loop(trees)
 
 #get filename
 filename <- basename(path)
-filename <- gsub(".csv", "", filename)
+#sub instead of gsub to handle files named csv.csv for example
+filename <- sub("\\.csv$", "", filename, ignore.case = TRUE)
 new_path <- paste("results/", filename, "_treeheights.csv", sep = "")
 
 #create results directory if it doesn't exist, no warnings so that it doesn't complain if it already exists
