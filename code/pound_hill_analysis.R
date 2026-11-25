@@ -127,15 +127,12 @@ plot_total_abundance <- quadrat_abundance  %>%
     dplyr::group_by(Cultivation, Block, Plot)  %>% 
     summarise(Total_abundance = sum(Abundance), .groups = "drop")
 
-abundance_plot <- ggplot(plot_total_abundance, aes(x = Cultivation, y = Total_abundance, fill = Block)) +
+ggplot(plot_total_abundance, aes(x = Cultivation, y = Total_abundance, fill = Block)) +
     geom_col(position = "dodge") +
     scale_fill_manual(values = c("#41AEBD", "#97E9D5", "#A2CF49", "#608F3D")) +
     xlab("Cultivation month") +
     ylab("Total plot plant abundance") +
     theme_classic()
-
-ggsave("results/pound_hill_plot_abundance.pdf", plot = abundance_plot,
-       width = 11.7, height = 8.3, units = "in")
 
 # FIGURE INTERPRETATION. 
 # Unlike richness, patterns of abundance vary among plots. 
