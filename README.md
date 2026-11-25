@@ -238,4 +238,42 @@ e.g.
 ```
 bash code/CheckLabel.sh oak
 ```
+## CountLines.sh
+Counts number of lines in a file.
 
+### Run
+From repo root:
+```
+bash code/CountLines.sh <file.txt>
+```
+Example code:
+```
+bash code/CountLines.sh data/spawannxs.txt
+```
+
+## ConcatenateTwoFiles.sh
+script that concatenates two supplied files together and outputs combined file.
+
+### Run
+From repo root:
+```
+bash code/ConcatenateTwoFiles.sh <file1>.txt <file2>.txt <file3>.txt
+```
+
+Example test:
+```
+#make directory if doesn't already exist
+mkdir -p sandbox/results sandbox/code
+
+#create two simple test .txt files
+printf 'oak\n' > "sandbox/code/first.txt"
+printf 'pine\n' > "sandbox/code/second.txt"
+
+#run script
+bash code/ConcatenateTwoFiles.sh "sandbox/code/first.txt" "sandbox/code/second.txt" "sandbox/results/third.txt"
+```
+### Paths
+See Example test above  
+
+Input: two .txt files (within a specified directory) as the first two arguments
+Output: a .txt file (within a specified directory) as third argument.
