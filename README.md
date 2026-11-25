@@ -201,3 +201,27 @@ From repo root:
 ```
 bash code/variables.sh <value> <value>
 ```
+## MyExampleScript.sh
+Basic bash script to show how variables can be stored and called. Prints "Hello \<user>"
+
+### Run
+
+From repo root:
+```
+bash code/MyExampleScript.sh
+```
+
+## boilerplate.sh
+Basic bash script to show how scripts can be run from the terminal
+
+### Run
+
+From repo root:
+```
+bash code/boilerplate.sh
+```
+or
+```
+code/boilerplate.sh
+```
+
