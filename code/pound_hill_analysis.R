@@ -94,11 +94,17 @@ message("\n Plot mean richness table saved to results/pound_hill_plot_richness.c
 
 # Plot mean richness among three different cultivation treatments 
 
-richness_plot <- ggplot(plot_mean_richness, aes(x = Cultivation, y = MeanRichness, fill = Block))+
-    geom_col(position = "dodge")+
-    scale_fill_manual(values = c("#41AEBD", "#97E9D5", "#A2CF49", "#608F3D"))+
-    xlab("Cultivation month")+
-    ylab("Species richness")+
+richness_plot <- ggplot(plot_mean_richness,
+                        aes(x = Cultivation, y = MeanRichness, fill = Block)) +
+    geom_col(position = position_dodge(width = 0.9)) +
+    geom_point(data = quadrat_richness,
+               aes(x = Cultivation, y = Richness, fill = Block),
+               position = position_jitterdodge(jitter.width = 0.15, jitter.height = 0,
+                                               dodge.width = 0.9, seed = 1),
+               colour = "black", shape = 16, size = 2.5, show.legend = FALSE) +
+    scale_fill_manual(values = c("#41AEBD", "#97E9D5", "#A2CF49", "#608F3D")) +
+    labs(x = "Cultivation month",
+         y = "Mean species richness per quadrat") +
     theme_classic()
 
 ggsave("results/pound_hill_plot_richness.pdf", plot = richness_plot,
@@ -107,9 +113,7 @@ ggsave("results/pound_hill_plot_richness.pdf", plot = richness_plot,
 message("\nSpecies richness by plot graph saved to results/pound_hill_plot_richness.pdf\n\n")
 
 # FIGURE INTERPRETATION
-# All plots show a general pattern of species richness increasing from March to May, and decreasing from May to October. Peak richness May in all plots.
-# The difference in richness between March and October is variable and depends on the plot. 
-
+# All blocks show highest richness in May. Treatments in October and March do not appear to differ, with 2 blocks  showing higher mean richness in October and 2 in March. This suggests that summer is a strong predictor of species richness, while differences between Autumn and Spring depend on other factors.
 
 
 
@@ -132,7 +136,7 @@ abundance_plot <- ggplot(plot_total_abundance, aes(x = Cultivation, y = Total_ab
 
 ggsave("results/pound_hill_plot_abundance.pdf", plot = abundance_plot,
        width = 11.7, height = 8.3, units = "in")
-       
+
 # FIGURE INTERPRETATION. 
 # Unlike richness, patterns of abundance vary among plots. 
 # May is only the peak month of abundance for one plot. Indicating that more species rich plots aren't necessarily the most plant-dense. This may be due to increased competition, where reduced richness leads to numerical dominance of some species.
