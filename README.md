@@ -450,3 +450,16 @@ Rscript code/basic_io.R
 ### Paths
 - INPUT: `data/trees.csv`
 - OUTPUT: `results/MyData.csv`
+
+## boilerplate.R
+Simple boilerplate to learn how to call functions in a script .R file from the terminal or from the R console.
+
+### Run
+```bash
+Rscript code/boilerplate.R
+```
+OR from R console:
+```R
+source("code/boilerplate.R")
+```
+Running `ls()` should show `MyFunction` as a usable function in the R environment.
