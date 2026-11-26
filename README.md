@@ -393,4 +393,11 @@ For example, can input 4 arguments:7
 python3 code/sysargv.py oak 12 example3 var
 ```
 
-##
+## control_flow.py
+Exercise to practise use of `doctest`. Python script contains function which returns whether an input is odd or even.
+
+### Run
+From repo root:
+```bash
+python3 -m doctest -v code/control_flow.py
+```
