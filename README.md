@@ -362,3 +362,20 @@ From repo root:
 ```bash
 python3 code/boilerplate.py
 ```
+
+## using_name.py
+Exercise that demonstrates how python sets `__name__`.
+
+### Run 
+From repo root:
+
+```bash
+python3 code/using_name.py
+```
+Should return `This module's name is __main__` <br><br>
+Alternatively, in ipython3 run from /code/ folder:
+```python
+import using_name
+using_name.module_name()
+```
+This should return `using_name`.
