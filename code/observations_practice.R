@@ -40,8 +40,8 @@ read_observations <- function(path) {
   return(observations)
 }
 
-#calling the function on deliberately wrong csv
-read_observations("data/bootcamp_observations_invalid.csv")
+#calling the function on deliberately wrong csv. Uncomment line below to test the error handling
+#read_observations("data/bootcamp_observations_invalid.csv")
 
 #calling the function on correct csv
 df <- read_observations("data/bootcamp_observations.csv")
@@ -58,7 +58,43 @@ df
 
 #PSEUDOCODE
 ## summarise_observations(data):
-## Use dplyr to group_by_all, remove second and subsequent duplicates
+## Use dplyr to find duplicates
 ## group by site
 ## calculate total_known and missing_count for each site
 ## if every count is missing for a site, report total_known as NA
+
+if (!require("dplyr")) install.packages("dplyr")
+require(dplyr)
+summarise_observations <- function(data) {
+  data <- distinct(data)
+
+  dplyr::summarise(
+    dplyr::group_by(data, site),
+    total_known = if (all(is.na(count))) NA_integer_ else sum(count, na.rm = TRUE),
+    missing_count = sum(is.na(count)),
+    .groups = "drop"
+  )
+}
+
+# Suggested solution applied to the test CSV
+summary_df <- summarise_observations(df)
+print(summary_df)
+
+#for boundary df
+df_boundary <- read_observations("data/bootcamp_observations_boundary.csv")
+summary_df_boundary <- summarise_observations(df_boundary)
+print(summary_df_boundary)
+
+# Checks for the test data
+stopifnot(
+  summary_df$total_known[summary_df$site == "A"] == 2,
+  summary_df$missing_count[summary_df$site == "A"] == 1,
+  summary_df$total_known[summary_df$site == "B"] == 0,
+  summary_df$missing_count[summary_df$site == "B"] == 0,
+  is.na(summary_df_boundary$total_known[summary_df_boundary$site == "C"]),
+  summary_df_boundary$missing_count[summary_df_boundary$site == "C"] == 2,
+  summary_df_boundary$total_known[summary_df_boundary$site == "D"] == 0,
+  summary_df_boundary$missing_count[summary_df_boundary$site == "D"] == 0
+)
+
+
