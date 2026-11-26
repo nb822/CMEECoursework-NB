@@ -353,3 +353,12 @@ From repo root:
 ```bash
 python3 code/MyExampleScript.py
 ```
+
+## boilerplate.py
+Exercise to learn how main guards work (`if __name__ == "__main__"`). If python3 is directly executed on the file, prints 'This is a boilerplate'.
+
+### Run
+From repo root:
+```bash
+python3 code/boilerplate.py
+```
