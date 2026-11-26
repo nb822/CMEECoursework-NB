@@ -476,6 +476,7 @@ Rscript code/basic_io.R
 Simple boilerplate to learn how to call functions in a script .R file from the terminal or from the R console.
 
 ### Run
+From repo root:
 ```bash
 Rscript code/boilerplate.R
 ```
@@ -489,7 +490,7 @@ Running `ls()` should show `MyFunction` as a usable function in the R environmen
 Exercise to learn different loops (`for`, `while` and `if` / `else` statements). 
 
 ### Run
-Best to run in code viewer and run each loop in the R console. To test to see if no errors, run:
+Best to run in code viewer and run each loop in the R console. To test to see if no errors, run from repo root:
 ```bash
 Rscript code/control_flow.R
 ```
@@ -498,7 +499,7 @@ Rscript code/control_flow.R
 Practice using `if` / `else` loops and assigning default values to functions. Contains three functions which 1) check if a number is prime 2) if a number is a power of 2 and 3) if a number is a prime number.
 
 ### Run
-Best opened in code viewer and run each if clause in the R console. To test to see if no errors, run:
+Best opened in code viewer and run each if clause in the R console. To test to see if no errors, run from repo root:
 ```bash
 Rscript code/r_conditionals.R
 ```
@@ -506,7 +507,7 @@ Rscript code/r_conditionals.R
 Demonstration of how `break` works in `while` loops. Iterates through numbers 0 to infinity, while a `break` clause at i = 10.
 
 ### Run
-From repository root:
+From repo root:
 ```bash
 Rscript code/break.R
 ```
@@ -515,6 +516,7 @@ Rscript code/break.R
 Demonstration of use of `next` within a loop.
 
 ### Run
+From repo root:
 ```bash
 Rscript code/next.R
 ```
@@ -546,6 +548,7 @@ Use `n` to execute next line, `c` to exit browser and continue execution, or `q`
 Challenge script that rejects or accepts count data files, then summarises count totals by site and outputs a figure to visualise counts.
 
 ### Run
+From repo root:
 ```bash
 Rscript code/observations_practice.R
 ```
@@ -557,6 +560,7 @@ Rscript code/observations_practice.R
 Data wrangling in R exercise, showing how to pivot tables.
 
 ### Run
+From repo root:
 ```bash
 Rscript code/data_wrang.R
 ```
@@ -568,6 +572,7 @@ Rscript code/data_wrang.R
 Data wrangling in R exercise, converting `data_wrang.R` script to using primarily tidyverse commands.
 
 ### Run
+From repo root:
 ```bash
 Rscript code/data_wrang_tidy.R
 ```
