@@ -565,6 +565,21 @@ Rscript code/data_wrang_tidy.R
 - INPUT(s): `data/pound_hill_data.csv` and `data/pound_hill_meta_data.csv`
 - OUTPUT: `results/pound_hill_long_tidyverse.csv` a pivoted table of the pound hill dataset
 
+# Additional scripts
+Other coursework pushed over the course of the month but not required for the final submission stayed in my `code` folder. None require inputs, `plotting_in_R.R` will save a .pdf file in your working directory if called directly from bash rather than in an R terminal. <br><br>
+All scripts work and can be called with `Rscript code/<script_name>` for .R files and `python3 code/<script_name>` for .py files.
+
+- apply1.R
+- apply2.R
+- basic_csv.py
+- catching_errors.R
+- example.py
+- numerical_computing.py
+- plotting_in_R.R
+- preallocate.R
+- sample.R
+- Vectorise.R
+
 # Changes after formative feedback
 
 ### Shell and Unix (assignment 1)
