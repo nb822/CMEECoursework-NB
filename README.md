@@ -401,3 +401,11 @@ From repo root:
 ```bash
 python3 -m doctest -v code/control_flow.py
 ```
+## test_control_flow.py
+Script to demonstrate the `assert` function. Tests functions imported from `control_flow.py` and asserts expected value inputted into imported functions.
+
+### Run
+From repo root:
+```bash
+python3 code/test_control_flow.py
+```
