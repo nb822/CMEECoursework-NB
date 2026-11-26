@@ -1,0 +1,16 @@
+#function to test try on
+doit <- function(x) {
+    temp_x <- sample(x, replace = TRUE)
+    if(length(unique(temp_x)) > 30) {#only take mean if sample was sufficient
+         print(paste("Mean of this sample was:", as.character(mean(temp_x))))
+        } 
+    else {
+        stop("Couldn't calculate mean: too few unique values!")
+        }
+    }
+
+set.seed(1345) # again, to get the same result for illustration
+popn <- rnorm(50)
+
+#generally gives error if try not present. Try lets us skip an error and keep the 'loop' going.
+result <- lapply(1:15, function(i) try(doit(popn), FALSE))

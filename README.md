@@ -497,3 +497,12 @@ Demonstration of use of `next` within a loop.
 ```bash
 Rscript code/next.R
 ```
+
+## try.R
+Exercise that introduces the `try` function. This allows us to perform a function or loop, and should an error come up, skip the error and continue to the end of the loop. 
+
+### Run
+From repo root:
+```bash
+Rscript code/try.R
+```
