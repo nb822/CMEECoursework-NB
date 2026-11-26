@@ -191,7 +191,7 @@ Rscript code/pound_hill_analysis.R
 - INPUT: `data/pound_hill_data.csv` (unchanged downloaded file)
 - OUTPUTS: `results/pound_hill_plot_richness.csv` and `results/pound_hill_plot_richness.pdf`
 
-# Classwork
+# Classwork: bash scripting
 ## variables.sh
 Practice code to show how variables are stored and called. The arguments can be any values and the script will prompt you in the terminal to type a string and two integers separated by a space.
 
@@ -307,6 +307,7 @@ bash "$script_path" _1775...167th_Anniversary...1942__-_NARA_-_513783.tiff
 - INPUT(S): a .tiff file or directory containing .tiff files
 - OUTPUT(S): (a) .png file(s) in the **same folder** as the .tiff file
 
+# Classwork: python
 ## loops.py
 Exercise to learn loop construction in Python.
 - A `for` loop with `range(5)` prints the integers 0–4.
@@ -438,4 +439,14 @@ From repo root:
 ```bash
 python3 code/debugme.py 
 ```
-
+# Classwork: R
+## basic_io.R
+Basic script that demonstrates writing and reading .csv files. `\results\` folder in repository root must have been made for script to work.
+### Run
+From repo root:
+```bash
+Rscript code/basic_io.R
+```
+### Paths
+- INPUT: `data/trees.csv`
+- OUTPUT: `results/MyData.csv`

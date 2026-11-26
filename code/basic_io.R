@@ -4,3 +4,5 @@
 MyData <- read.csv("data/trees.csv", header = TRUE) #import w/ headers
 write.csv(MyData, "results/MyData.csv")             #write to results folder
 write.table(MyData[1,], file = "results/MyData.csv", append = TRUE) # append to it
+write.csv(MyData, "results/MyData.csv", row.names = TRUE) # Write row names
+write.table(MyData, "results/MyData.csv", col.names = FALSE) # Omit column names
