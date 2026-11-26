@@ -335,3 +335,14 @@ From repo root:
 ```bash
 python3 code/cfexercises1.py
 ```
+
+## cfexercises2.py
+Predictions exercise to understand `for`, `if` and `while` loops. 
+
+### Run
+To test the code works, run:
+```bash
+python3 code/cfexercises2.py
+```
+
+##
