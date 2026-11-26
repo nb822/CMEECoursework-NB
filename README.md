@@ -379,3 +379,18 @@ import using_name
 using_name.module_name()
 ```
 This should return `using_name`.
+
+## sysargv.py
+Exercise to learn how to use command-line arguments to store variables in a python script, without editing the python script. This script lets you input arguments to the bash command, printing (1) the script name (`sys.argv[0]`), (2) the number of arguments (`len(sys.argv) -1`) and (3) lists the arguments inputted (`sys.argv[1:]`)
+
+### Run
+From repo root:
+```bash
+python3 code/sysargv.py
+```
+For example, can input 4 arguments:7
+```bash
+python3 code/sysargv.py oak 12 example3 var
+```
+
+##
