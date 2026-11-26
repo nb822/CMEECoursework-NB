@@ -46,3 +46,19 @@ read_observations("data/bootcamp_observations_invalid.csv")
 #calling the function on correct csv
 df <- read_observations("data/bootcamp_observations.csv")
 df
+
+##Task for the function summarise_observations(data)
+# need to:
+#      remove exact duplicate rows once
+#      for each site, report total_known (sum of non-missing counts)
+#      for each site, report missing_count (sum of missing counts)
+#      if every count is missing for a site, report total_known as NA
+#      results should be: A (2, 1), B (0, 0), C (NA, 2), and D (0, 0), where each pair is (total_known, missing_count)
+#      add stopifnot() checks for each output value to ensure the function is working correctly
+
+#PSEUDOCODE
+## summarise_observations(data):
+## Use dplyr to group_by_all, remove second and subsequent duplicates
+## group by site
+## calculate total_known and missing_count for each site
+## if every count is missing for a site, report total_known as NA
