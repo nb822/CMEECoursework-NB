@@ -506,3 +506,17 @@ From repo root:
 ```bash
 Rscript code/try.R
 ```
+
+## browse.R
+Exercise to learn how to use the `browser` function in R. This script creates a simulated exponential growth curve.
+
+### Run
+To test the script works, enter an R terminal with the repo root as the working directory:
+```R
+source("code/browse.R")
+```
+To test the `browser` function, enter a code editor and un-comment #browser(), then run
+```R
+source("code/browse.R")
+```
+Use `n` to execute next line, `c` to exit browser and continue execution, or `q` to exit browser and abort. 
