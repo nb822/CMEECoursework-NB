@@ -22,8 +22,8 @@ sh unixPrac1.txt
 ```
 
 ### Paths
-INPUT: `data/fasta/*.fasta`
-OUTPUT: None. Results printed directly in terminal. 
+- INPUT: `data/fasta/*.fasta`
+- OUTPUT: None. Results printed directly in terminal. 
 
 ### Code validation
 Code tested on a .fasta file with 9 characters, line breaks between them and ATGC present. Expected number of bases and ATGC count returned. 
@@ -44,8 +44,8 @@ Example working code:
 bash code/tabtocsv.sh data/tab-example.tsv
 ```
 ### Paths
-INPUT: `<path>/<file>.tsv` from root repo
-OUTPUT: `results/<file>.tsv.csv` from root repo
+- INPUT: `<path>/<file>.tsv` from root repo
+- OUTPUT: `results/<file>.tsv.csv` from root repo
 
 ### Validation
 Output checked on `data/tab-example.tsv`. Output checked for invalid file number, and invalid file names. 
@@ -66,8 +66,8 @@ Example working code:
 bash code/csvtospace.sh data/temperatures/1801.csv
 ```
 ### Paths
-INPUT: `<path>/<file>.csv` from repo root
-OUTPUT: `results/<file>.csv.space` from root repo
+- INPUT: `<path>/<file>.csv` from repo root
+- OUTPUT: `results/<file>.csv.space` from root repo
 
 ### Validation
 Output checked on files in `data/temperatures/`. Output checked for invalid file number, and invalid file names. 
@@ -124,8 +124,8 @@ Rscript code/TreeHeight.R
 
 ### Paths
 
-- Input: `data/trees.csv` (unchanged downloaded file)
-- Output: `results/TreeHts.csv` (generated; the script recreates it)
+- INPUT: `data/trees.csv` (unchanged downloaded file)
+- OUTPUT: `results/TreeHts.csv` (generated; the script recreates it)
 
 ### Check
 
@@ -152,8 +152,8 @@ Rscript code/get_TreeHeight.R data/trees.csv
 
 ### Paths
 
-- Input: `<data/any_tree.csv>` File with columns: "Species", "Distance.m" and "Angle.degrees"
-- Output: `results/<any_tree>_treeheights.csv` generated
+- INPUT: `<data/any_tree.csv>` File with columns: "Species", "Distance.m" and "Angle.degrees"
+- OUTPUT: `results/<any_tree>_treeheights.csv` generated
 
 ### Check
 
@@ -188,8 +188,8 @@ Rscript code/pound_hill_analysis.R
 
 ### Paths
 
-- Input: `data/pound_hill_data.csv` (unchanged downloaded file)
-- Output: `results/pound_hill_plot_richness.csv` and `results/pound_hill_plot_richness.pdf`
+- INPUT: `data/pound_hill_data.csv` (unchanged downloaded file)
+- OUTPUTS: `results/pound_hill_plot_richness.csv` and `results/pound_hill_plot_richness.pdf`
 
 # Classwork
 ## variables.sh
@@ -275,8 +275,8 @@ bash code/ConcatenateTwoFiles.sh "sandbox/code/first.txt" "sandbox/code/second.t
 ### Paths
 See Example test above  
 
-Input: two .txt files (within a specified directory) as the first two arguments
-Output: a .txt file (within a specified directory) as third argument.
+- INPUT: two .txt files (within a specified directory) as the first two arguments
+- OUTPUT: a .txt file (within a specified directory) as third argument.
 
 ## tiff2_png.sh
 Converts a .tiff image to a .png image.
@@ -304,5 +304,14 @@ cp ~/Downloads/_1775...167th_Anniversary...1942__-_NARA_-_513783.tiff "$test_dir
 bash "$script_path" _1775...167th_Anniversary...1942__-_NARA_-_513783.tiff
 ```
 ### Paths
-Input(s): a .tiff file
-Output(s): a .png file in the **same folder** as the .tiff file
+- INPUT(S): a .tiff file or directory containing .tiff files
+- OUTPUT(S): (a) .png file(s) in the **same folder** as the .tiff file
+
+## loops.py
+Exercise to learn loop construction in python. 
+
+### Run
+From repo root:
+```
+python3 code/loops.py
+```
