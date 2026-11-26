@@ -98,3 +98,30 @@ stopifnot(
 )
 
 
+# R-figure
+#combine boundary and test data for plotting
+combined_summary <- rbind(summary_df, summary_df_boundary)
+
+#create results dir if not already present
+dir.create("results", showWarnings = FALSE, recursive = TRUE)
+
+# create figure 
+png("results/known_totals.png", width = 1600, height = 1200, res = 200)
+
+par(mar = c(6, 4.5, 3, 1))
+heights <- combined_summary$total_known
+all_missing <- is.na(heights)
+
+mids <- barplot(
+  heights,
+  #captions under each bar, with missing counts in parentheses
+  names.arg = paste0(combined_summary$site, "\n(", combined_summary$missing_count, " missing)"),
+  ylim = c(0, max(heights, na.rm = TRUE) + 1),
+  xlab = "Site",
+  ylab = "Total known count",
+  main = "Known observation totals by site",
+  col = "grey60"
+)
+
+print("Figure saved to results/known_totals.png")
+dev.off()
