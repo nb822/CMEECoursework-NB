@@ -463,3 +463,12 @@ OR from R console:
 source("code/boilerplate.R")
 ```
 Running `ls()` should show `MyFunction` as a usable function in the R environment.
+
+## control_flow.R
+Exercise to learn different loops (`for`, `while` and `if` / `else` statements). 
+
+### Run
+Best to run in code viewer and run each loop in the R console. To test to see if no errors, run:
+```bash
+Rscript code/control_flow.R
+```
