@@ -340,9 +340,16 @@ python3 code/cfexercises1.py
 Predictions exercise to understand `for`, `if` and `while` loops. 
 
 ### Run
-To test the code works, run:
+To test the code works, run from repo root:
 ```bash
 python3 code/cfexercises2.py
 ```
 
-##
+## MyExampleScript.py
+Exercise to learn how to run python scripts in bash terminal. Runs a simple square function and prints the square of 2.
+
+### Run
+From repo root:
+```bash
+python3 code/MyExampleScript.py
+```
