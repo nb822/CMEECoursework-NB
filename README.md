@@ -626,7 +626,7 @@ All scripts work and can be called with `Rscript code/<script_name>` for .R file
   interpretation now compares treatments. Reran twice: CSV identical (`md5sum`), PDF inspected by eye.
 
 ### Final check
-Repeated everything from a state without `results/`.
+Repeated everything from a state without `results/`. Git repo cloned and all commands in README performed. 
 
 # AI Use statement
 AI was used to create to-do lists, for documentation help and bugfixing. AI was also used as a tutor and for hints when stuck on code, but only when advice could not be found on online resources such as stack overflow.
