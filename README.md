@@ -1,4 +1,15 @@
-CMEEcoursework repository for learning version control, bash scripting, python and R.
+# Introduction
+Welcome! This is my CMEEcoursework repository for learning version control, bash scripting, python and R. it contains scripts, all contained in `code/` and data needed for those scripts, housed in `data/`. Many of the scripts are part of weekly assignments, while others are from class coursework. 
+
+## Requirements
+
+- **Shell:** Bash on Linux/macOS
+- **Python:** 3.x, standard library only.
+- **R:** 4.1 or later
+  - `data_wrang.R` needs `reshape2`.
+  - `data_wrang_tidy.R` needs `tidyverse` (specifically `dplyr`, `stringr`, `tidyr`, `readr`).
+  - Install with `install.packages(c("tidyverse", "reshape2"))`.
+- **Other:** `tiff2_png.sh` needs ImageMagick (`convert`).
 
 # Assignment 1 
 ## unixPrac1.txt
@@ -553,3 +564,39 @@ Rscript code/data_wrang_tidy.R
 ### Paths
 - INPUT(s): `data/pound_hill_data.csv` and `data/pound_hill_meta_data.csv`
 - OUTPUT: `results/pound_hill_long_tidyverse.csv` a pivoted table of the pound hill dataset
+
+# Changes after formative feedback
+
+### Shell and Unix (assignment 1)
+- **`unixPrac1.txt` Q3/Q4.** Counts included newline characters, and `grep -o` searched
+  wrapped lines separately. Both now strip newlines first (`tr -d '\n'`). Checked on a
+  toy file in `sandbox/` (`>t`, `AT`, `GC`): length 4, one `ATGC`. Added the
+  missing explanations for Q1, Q3 and Q5.
+- **`tabtocsv.sh` / `csvtospace.sh`.** Output is now written to the repository-root
+  `results/`, found from the script's own location, and `results/` is created if missing.
+  Added `-f` and conversion-success checks, and the CSV converter writes `<name>.csv.txt`.
+  Added `data/tab-example.tsv` and `data/temperatures/1800-1803.csv`. Checked with valid input, no argument, a missing file, a directory, a path with spaces, and a rerun.
+
+### Python (assignment 2)
+- **`validate_record` interface.** `accepted_ids` is now a set used for duplicate checks
+  (the ID pattern is a module constant), so the function works as documented.
+- **Output differences.** Issue reasons are written as one string, the angle
+  is validated even when the distance is missing, and oak counts are sorted. Added `code/test_silwood_trees.py` tests. All tests which failed before feedback now passed. Reran the cleaner twice and
+  inspected all three outputs.
+
+### R (assignment 3)
+- **Missing `results/`.** All three scripts create it after validation passes. Checked by
+  deleting `results/` and running each from the project root.
+- **Tree heights.** [Bounds corrected to `0 < Distance.m <= 100`, `0 < Angle.degrees < 90`;
+  invalid input exits with status 1 and writes nothing.] Checked `TreeHeight(45, 8)` against
+  `8 * tan(45 * pi / 180)`, =8 bad CSVs in `sandbox/`, and hand-checked row 23:
+  angle = 38.6918964318465, distance = 39.8774524684995 gives 31.9386, matching the CSV.
+- **Pound Hill.** Filenames match the brief, the column is `MeanRichness`, figures are
+  saved with `ggsave()` (no `Rplots.pdf`), and the
+  interpretation now compares treatments. Reran twice: CSV identical (`md5sum`), PDF inspected by eye.
+
+### Final check
+Repeated everything from a state without `results/`.
+
+# AI Use statement
+AI was used to create to-do lists, for documentation help and bugfixing. AI was also occassionally used as a tutor, but only when advice could not be found on online resources such as stack overflow.
