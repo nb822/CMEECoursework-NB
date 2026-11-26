@@ -57,14 +57,3 @@ dim(MyWrangledData)
 dir.create("results", showWarnings = FALSE)
 write.csv(MyWrangledData, "results/pound_hill_long.csv", row.names = FALSE)
 
-# Explore the data below this line.
-## USING TIDYVERSE
-library(tidyverse)
-MyWrangledData <- as_tibble(MyWrangledData)
-class(MyWrangledData)
-glimpse(MyWrangledData)filter(MyWrangledData, Count>100)
-
-#using pipes to derive useful data, e.g. mean count per species
-MyWrangledData %>%
-  group_by(Species) %>%
-    summarise(avg = mean(Count))

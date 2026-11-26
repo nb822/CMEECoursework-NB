@@ -531,3 +531,14 @@ Rscript code/observations_practice.R
 ### Paths
 - INPUT(s): `data/bootcamp_observations.csv`, `bootcamp_observations_invalid.csv` and `bootcamp_observations_boundary.csv`.
 - OUTPUT: `results/known_totals.png`
+
+## data_wrang.R
+Data wrangling in R exercise, showing how to pivot tables.
+
+### Run
+```bash
+Rscript code/data_wrang.R
+```
+### Paths
+- INPUT(s): `data/pound_hill_data.csv` and `data/pound_hill_meta_data.csv`
+- OUTPUT: `results/pound_hill_long.csv` a pivoted table of the pound hill dataset
