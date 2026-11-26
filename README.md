@@ -520,3 +520,14 @@ To test the `browser` function, enter a code editor and un-comment #browser(), t
 source("code/browse.R")
 ```
 Use `n` to execute next line, `c` to exit browser and continue execution, or `q` to exit browser and abort. 
+
+## observations_practice.R
+Challenge script that rejects or accepts count data files, then summarises count totals by site and outputs a figure to visualise counts.
+
+### Run
+```bash
+Rscript code/observations_practice.R
+```
+### Paths
+- INPUT(s): `data/bootcamp_observations.csv`, `bootcamp_observations_invalid.csv` and `bootcamp_observations_boundary.csv`.
+- OUTPUT: `results/known_totals.png`
