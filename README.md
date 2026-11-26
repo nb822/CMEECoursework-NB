@@ -308,10 +308,30 @@ bash "$script_path" _1775...167th_Anniversary...1942__-_NARA_-_513783.tiff
 - OUTPUT(S): (a) .png file(s) in the **same folder** as the .tiff file
 
 ## loops.py
-Exercise to learn loop construction in python. 
+Exercise to learn loop construction in Python.
+- A `for` loop with `range(5)` prints the integers 0–4.
+- A `for` loop iterates over a mixed-type list and prints every item.
+- A `for` loop adds values in a list and prints the cumulative total after each addition.
+- A `while` loop increments `z` from 0 to 100 and prints each value.
 
 ### Run
 From repo root:
-```
+```bash
 python3 code/loops.py
+```
+
+## cfexercises1.py
+Exercise to learn how functions work in Python. Running the script from bash tests each of the following functions on simple integer values (3; 3,4; 4,5,3; 3; 3; 3 respectively) and prints the results.
+
+- `foo_1(x)` returns the square root of `x`.
+- `foo_2(x, y)` returns the larger of two numbers.
+- `foo_3(x, y, z)` returns three numbers ordered from smallest to largest.
+- `foo_4(x)` calculates `x` factorial with a `for` loop.
+- `foo_5(x)` calculates `x` factorial recursively.
+- `foo_6(x)` calculates `x` factorial with a `while` loop.
+
+### Run 
+From repo root:
+```bash
+python3 code/cfexercises1.py
 ```

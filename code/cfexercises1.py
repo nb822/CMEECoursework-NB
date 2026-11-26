@@ -39,3 +39,10 @@ def foo_6(x):
         x -= 1
     return facto
 
+
+print(foo_1(3))
+print(foo_2(3, 4))
+print(foo_3(4, 5, 3))
+print(foo_4(3))
+print(foo_5(3))
+print(foo_6(3))
