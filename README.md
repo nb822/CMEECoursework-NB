@@ -481,3 +481,19 @@ Best opened in code viewer and run each if clause in the R console. To test to s
 ```bash
 Rscript code/r_conditionals.R
 ```
+## break.R
+Demonstration of how `break` works in `while` loops. Iterates through numbers 0 to infinity, while a `break` clause at i = 10.
+
+### Run
+From repository root:
+```bash
+Rscript code/break.R
+```
+
+## next.R
+Demonstration of use of `next` within a loop.
+
+### Run
+```bash
+Rscript code/next.R
+```
