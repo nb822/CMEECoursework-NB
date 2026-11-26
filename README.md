@@ -422,7 +422,7 @@ python3 code/observations_practice.py
 - INPUT: `data/bootcamp_observations.csv`
 - output printed in terminal
 
-# test_observations_practice.py
+## test_observations_practice.py
 Exercise that integrates `for` loops, `try`, `except` and `else` into testing functions from another script `observations_practice.py`.
 
 ### Run
@@ -430,3 +430,12 @@ From repo root:
 ```bash
 python3 code/test_observations_practice.py
 ```
+## debugme.py
+Example script to learn how to debug code. Code started with a function that deliberately threw a `ZeroDivisionError`. Script now has in-built `try` and `except` clauses to stop an error from being thrown.
+
+### Run
+From repo root:
+```bash
+python3 code/debugme.py 
+```
+
