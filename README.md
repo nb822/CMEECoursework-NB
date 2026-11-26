@@ -1,9 +1,19 @@
 # Introduction
 Welcome! This is my CMEEcoursework repository for learning version control, bash scripting, python and R. it contains scripts, all contained in `code/` and data needed for those scripts, housed in `data/`. Many of the scripts are part of weekly assignments, while others are from class coursework. 
 
+## Repository layout
+
+- `code/` — Python, R, and shell scripts.
+- `data/` — Input datasets used by scripts and analyses.
+- `results/` — Generated figures, summaries, and processed data. .gitignored
+- `sandbox/` — Temporary or exploratory work. .gitignored
+- `Feedback/` — Assignment feedback documents.
+- `README.md` — Repository overview and usage instructions.
+
 ## Requirements
 
 - **Shell:** Bash on Linux/macOS
+    - GNU `bc` (basic calculator) package needed for running `unixPrac1.txt`. May not be available on macOS.
 - **Python:** 3.x, standard library only.
 - **R:** 4.1 or later
   - `data_wrang.R` needs `reshape2`.
@@ -78,7 +88,7 @@ bash code/csvtospace.sh data/temperatures/1801.csv
 ```
 ### Paths
 - INPUT: `<path>/<file>.csv` from repo root
-- OUTPUT: `results/<file>.csv.space` from root repo
+- OUTPUT: `results/<file>.csv.txt` from root repo
 
 ### Validation
 Output checked on files in `data/temperatures/`. Output checked for invalid file number, and invalid file names. 
@@ -93,7 +103,7 @@ Validates and cleans tree survey data. Valid records are written to a clean file
 From the repo root: 
 
 ```bash
-Python3 code/clean_silwood_trees.py
+python3 code/clean_silwood_trees.py
 ```
 
 ### Paths
@@ -101,7 +111,7 @@ Python3 code/clean_silwood_trees.py
 - INPUT: `data/silwood_trees_raw.csv` (unchanged downloaded file)
 - OUTPUTS, written to `results/` and overwritten on every run:
     - `results/silwood_trees_clean.csv` accepted records
-    - `results/silwood_trees_issues.csv` rejected records 
+    - `results/silwood_tree_issues.csv` rejected records 
     - `results/oak_species_counts.csv` count of accepted *Quercus* records
 
 ### Validation rules
@@ -115,10 +125,10 @@ Checks whether functions of clean_silwood_trees.py gives expected outputs given 
 From the repo root: 
 
 ```bash
-Python3 code/test_silwood_trees.py
+python3 code/test_silwood_trees.py
 ```
 ### Paths
-Takes functions from `data/silwood_trees_raw.csv`. No output.
+Takes functions from `code/clean_silwood_trees.py`. No output.
 
 # Assignment 3
 ## TreeHeight.R
@@ -199,7 +209,7 @@ Rscript code/pound_hill_analysis.R
 
 ### Paths
 
-- INPUT: `data/pound_hill_data.csv` (unchanged downloaded file)
+- INPUT: `data/pound_hill_data.csv`, `data/pound_hill_meta_data.csv` (unchanged downloaded file)
 - OUTPUTS: `results/pound_hill_plot_richness.csv` and `results/pound_hill_plot_richness.pdf`
 
 # Classwork: bash scripting
@@ -452,7 +462,7 @@ python3 code/debugme.py
 ```
 # Classwork: R
 ## basic_io.R
-Basic script that demonstrates writing and reading .csv files. `\results\` folder in repository root must have been made for script to work.
+Basic script that demonstrates writing and reading .csv files.
 ### Run
 From repo root:
 ```bash
@@ -602,9 +612,9 @@ All scripts work and can be called with `Rscript code/<script_name>` for .R file
 ### R (assignment 3)
 - **Missing `results/`.** All three scripts create it after validation passes. Checked by
   deleting `results/` and running each from the project root.
-- **Tree heights.** [Bounds corrected to `0 < Distance.m <= 100`, `0 < Angle.degrees < 90`;
-  invalid input exits with status 1 and writes nothing.] Checked `TreeHeight(45, 8)` against
-  `8 * tan(45 * pi / 180)`, =8 bad CSVs in `sandbox/`, and hand-checked row 23:
+- **Tree heights.** Bounds corrected to `0 < Distance.m <= 100`, `0 < Angle.degrees < 90`;
+  invalid input exits with status 1 and writes nothing. Checked `TreeHeight(45, 8)` against
+  `8 * tan(45 * pi / 180)` (both = 8), bad CSVs in `sandbox/`, and hand-checked row 23:
   angle = 38.6918964318465, distance = 39.8774524684995 gives 31.9386, matching the CSV.
 - **Pound Hill.** Filenames match the brief, the column is `MeanRichness`, figures are
   saved with `ggsave()` (no `Rplots.pdf`), and the
@@ -614,4 +624,4 @@ All scripts work and can be called with `Rscript code/<script_name>` for .R file
 Repeated everything from a state without `results/`.
 
 # AI Use statement
-AI was used to create to-do lists, for documentation help and bugfixing. AI was also occassionally used as a tutor, but only when advice could not be found on online resources such as stack overflow.
+AI was used to create to-do lists, for documentation help and bugfixing. AI was also used as a tutor and for hints when stuck on code, but only when advice could not be found on online resources such as stack overflow.
