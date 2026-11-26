@@ -472,3 +472,12 @@ Best to run in code viewer and run each loop in the R console. To test to see if
 ```bash
 Rscript code/control_flow.R
 ```
+
+## r_conditionals.R
+Practice using `if` / `else` loops and assigning default values to functions. Contains three functions which 1) check if a number is prime 2) if a number is a power of 2 and 3) if a number is a prime number.
+
+### Run
+Best opened in code viewer and run each if clause in the R console. To test to see if no errors, run:
+```bash
+Rscript code/r_conditionals.R
+```
