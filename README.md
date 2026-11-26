@@ -542,3 +542,14 @@ Rscript code/data_wrang.R
 ### Paths
 - INPUT(s): `data/pound_hill_data.csv` and `data/pound_hill_meta_data.csv`
 - OUTPUT: `results/pound_hill_long.csv` a pivoted table of the pound hill dataset
+
+## data_wrang_tidy.R
+Data wrangling in R exercise, converting `data_wrang.R` script to using primarily tidyverse commands.
+
+### Run
+```bash
+Rscript code/data_wrang_tidy.R
+```
+### Paths
+- INPUT(s): `data/pound_hill_data.csv` and `data/pound_hill_meta_data.csv`
+- OUTPUT: `results/pound_hill_long_tidyverse.csv` a pivoted table of the pound hill dataset
