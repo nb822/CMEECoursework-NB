@@ -409,3 +409,24 @@ From repo root:
 ```bash
 python3 code/test_control_flow.py
 ```
+
+## observations_practice.py
+Practice loading .csv files using python.
+
+### Run
+From repo root:
+```bash
+python3 code/observations_practice.py
+```
+### Paths
+- INPUT: `data/bootcamp_observations.csv`
+- output printed in terminal
+
+# test_observations_practice.py
+Exercise that integrates `for` loops, `try`, `except` and `else` into testing functions from another script `observations_practice.py`.
+
+### Run
+From repo root:
+```bash
+python3 code/test_observations_practice.py
+```
